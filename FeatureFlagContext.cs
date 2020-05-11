@@ -7,7 +7,10 @@ namespace featureflags
 {
     public class FeatureFlagContext : DbContext
     {
-        public FeatureFlagContext(DbContextOptions<FeatureFlagContext> options) : base(options) { }
+        public FeatureFlagContext(DbContextOptions<FeatureFlagContext> options) : base(options)
+        {
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        }
 
         public DbSet<FeatureFlag> FeatureFlags { get; set; }
         public DbSet<Rule> Rules { get; set; }
